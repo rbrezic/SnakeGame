@@ -34,6 +34,7 @@ public class Home extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(600, 400));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 0));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 0, 0), 4, true));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

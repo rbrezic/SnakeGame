@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class Snake {
+public class Snake extends JFrame implements KeyListener,Runnable {
     JPanel p1,p2;
     JButton[] lb=new JButton[200];
     JButton bounsfood;
@@ -68,19 +68,12 @@ public class Snake {
      getContentPane().add(p2);
      show();
      setDefaultCloseOperation(EXIT_ON_CLOSE);
-     addKeyListner(this);
+     addKeyListener(this);
      //start thread
      myt=new Thread(this);
      myt.start();//go to run method
      
     }    
-
-
-    
-
-    private Object getContentPane() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     private void createFirstSnake() {
     for(int i=0;i<3;i++){
@@ -125,5 +118,65 @@ public class Snake {
             JOptionPane.showMessageDialog(p2, "Name"+":");
              }
     });
+    help.add(creator);
+    help.add(instruction);
+    mymbar.add(help);
+    setJMenuBar(mymbar);
     }
+    void reset(){
+        initializeValues();
+        p1.removeAll();
+        myt.stop();
+        createFirstSnake();
+        t.setText("Score==>"+score);
+        myt=new Thread(this);
+        myt.start();
+        
+    }
+    
+    void growup(){
+        lb[gu]=new JButton();
+        lb[gu].setEnabled(false);
+        p1.add(lb[gu]);
+        int a=10+(10*r.nextInt(48));
+        int b=10+(10*r.nextInt(23));
+        lbx[gu]=a;
+        lby[gu]=b;
+        lb[gu].setBounds(a, b, 10, 10);
+        gu++;
+    }
+    void moveForward(){
+        for(int i=0;i<gu;i++){
+            lbp[i]=lb[i].getLocation();
+        }
+        lbx[0]+=directionx;
+        lby[0]+=directiony;
+        lb[0].setBounds(lbx[0],lby[0],10,10);
+        for(int i=1;i<gu;i++){
+            lb[i].setLocation(lbp[i-1]);
+        }
+        if(lbx[0]==x){
+            lbx[0]=10;
+        }
+        else if(lbx[0]==0){
+            lbx[0]=x-10;
+        }
+        else if(lby[0]==y){
+            lby[0]=10;
+        }
+        else if(lby[0]==0){
+            lby[0]=y-10;
+        }
+        if(lbx[0]==lbx[gu-1]&&lby[0]==lby[gu-1]){
+            food=false;
+            score+=5;
+            t.setText("Score==>"+score);
+            if(score%50==0 && bounsflag==true){
+                p1.add(bounsfood);
+                
+                
+            }
+        }
+    }
+            
 }

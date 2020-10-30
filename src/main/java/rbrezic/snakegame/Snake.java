@@ -84,7 +84,7 @@ public class Snake {
 
     private void createFirstSnake() {
     for(int i=0;i<3;i++){
-        lb[i]=new JButton("lb"+i0);
+        lb[i]=new JButton("lb"+i);
         lb[i].setEnabled(false);
         p1.add(lb[i]);
         lb[i].setBounds(lbx[i], lby[i], 10, 10);
@@ -94,6 +94,36 @@ public class Snake {
     }
 
     private void createbar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    mymbar=new JMenuBar();
+    game=new JMenu("GAME");
+    JMenuItem newgame=new JMenuItem("new game");
+    JMenuItem exit=new JMenuItem("Exit");
+    newgame.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            reset();
+            }
+    });
+    exit.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+             }
+    });
+    
+    game.add(newgame);
+    game.addSeparator();
+    game.add(exit);
+    mymbar.add(game);
+    level=new JMenu("Level");
+    help=new JMenu("Help");
+    JMenuItem creator = new JMenuItem("Creator");
+    JMenuItem instruction= new JMenuItem("instruction");
+    creator.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(p2, "Name"+":");
+             }
+    });
     }
 }

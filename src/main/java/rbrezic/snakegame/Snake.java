@@ -27,6 +27,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         lby[0]=300;
         directionx=10;
         directiony=0;
+        difference=0;
         score=0;
         food=false;
         runl=false;
@@ -57,7 +58,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
      p1.setLayout(null);
      p2.setLayout(new GridLayout(0,1));
      p1.setBounds(0,0,x,y);
-     p1.setBackground(Color.YELLOW);
+     p1.setBackground(Color.BLUE);
      p2.setBounds(0,y,x, 30);
      p2.setBackground(Color.RED);
      
@@ -111,11 +112,11 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
     level=new JMenu("Level");
     help=new JMenu("Help");
     JMenuItem creator = new JMenuItem("Creator");
-    JMenuItem instruction= new JMenuItem("instruction");
+    JMenuItem instruction= new JMenuItem("Instruction");
     creator.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(p2, "Name"+":");
+            JOptionPane.showMessageDialog(p2, "Name"+":Rafael Brezić");
              }
     });
     help.add(creator);
@@ -198,7 +199,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         
         for(int i=1;i<gu;i++){
         if(lbp[0]==lbp[i]){
-            t.setText("Game ove -"+score);
+            t.setText("Game over -"+score);
             try{
                 myt.join();
             
@@ -214,14 +215,13 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
 
     @Override
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+         }
 
     @Override
     public void keyPressed(KeyEvent e) {
         //snake move to left when player pressed left arrow
         if(runl==true&&e.getKeyCode()==37){
-            directionx=-10;
+            directionx= -10;
             directiony=0;
             runr=false;
             runu=true;
@@ -230,14 +230,14 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         //snake move to up when player pressed up arrow
         if(runu==true&&e.getKeyCode()==38){
             directionx=0;
-            directiony=-10;
+            directiony= -10;
             rund=false;
             runr=true;
             runl=true;
         }
         //snake move to right when player pressed right arrow
         if(runr==true&&e.getKeyCode()==39){
-            directionx=+10;
+            directionx= +10;
             directiony=0;
             runl=false;
             runu=true;
@@ -246,7 +246,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         //snake move to down when player pressed down arrow
         if(rund==true&&e.getKeyCode()==40);{
         directionx=0;
-        directiony=+10;
+        directiony= +10;
         runu=false;
         runr=true;
         runl=true;
@@ -255,14 +255,19 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
 
     @Override
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+         }
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    for(;;){
+        moveForward();
+        try{
+            Thread.sleep(speed);
+        }
+        catch(InterruptedException ie){   
+        }
+    }    
+  }   
 }
 
   

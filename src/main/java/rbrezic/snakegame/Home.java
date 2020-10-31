@@ -51,6 +51,11 @@ public class Home extends javax.swing.JFrame {
         btnStart.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnStart.setForeground(new java.awt.Color(255, 0, 0));
         btnStart.setText("Start game");
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,6 +95,11 @@ public class Home extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        Snake s=new Snake();
+        s.setVisible(true);
+    }//GEN-LAST:event_btnStartActionPerformed
 
     /**
      * @param args the command line arguments

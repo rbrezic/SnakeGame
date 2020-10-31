@@ -5,7 +5,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
-public class Snake extends JFrame implements KeyListener,Runnable {
+public class  Snake extends JFrame implements KeyListener,Runnable {
     JPanel p1,p2;
     JButton[] lb=new JButton[200];
     JButton bounsfood;
@@ -173,10 +173,26 @@ public class Snake extends JFrame implements KeyListener,Runnable {
             t.setText("Score==>"+score);
             if(score%50==0 && bounsflag==true){
                 p1.add(bounsfood);
-                
+                bounsfood.setBounds((10*r.nextInt(50)),(10*r.nextInt(25)),15,15);
+                bfp=bounsfood.getLocation();
+                bounsflag=false;
                 
             }
         }
+        if(bounsflag==false){
+            if(bfp.x<=lbx[0]&&bfp.y<=lby[0]&&bfp.x+10>=lbx[0]&&bfp.y+10>=lby[0]){
+                p1.remove(bounsfood);
+                score+=100;
+                t.setText("Score==>"+score);
+                bounsflag=true;
+                
+            }
+        }
+        if(food==false){
+            
+        }
     }
+
+  
             
 }

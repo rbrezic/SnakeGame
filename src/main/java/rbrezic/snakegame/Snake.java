@@ -244,7 +244,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
             rund=true;
         }
         //snake move to down when player pressed down arrow
-        if(rund==true&&e.getKeyCode()==40);{
+        if(rund==true&&e.getKeyCode()==40){
         directionx=0;
         directiony= +10;
         runu=false;

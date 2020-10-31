@@ -189,10 +189,82 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
             }
         }
         if(food==false){
+          growup();
+          food=true;
+        }
+        else{
+            lb[gu-1].setBounds(lbx[gu-1],lby[gu-1],10,10);
+        }
+        
+        for(int i=1;i<gu;i++){
+        if(lbp[0]==lbp[i]){
+            t.setText("Game ove -"+score);
+            try{
+                myt.join();
             
         }
+            catch(InterruptedException ie){}
+            break;
+        
+    }     
+        }
+        p1.repaint();
+        show();
     }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        //snake move to left when player pressed left arrow
+        if(runl==true&&e.getKeyCode()==37){
+            directionx=-10;
+            directiony=0;
+            runr=false;
+            runu=true;
+            rund=true;
+        }
+        //snake move to up when player pressed up arrow
+        if(runu==true&&e.getKeyCode()==38){
+            directionx=0;
+            directiony=-10;
+            rund=false;
+            runr=true;
+            runl=true;
+        }
+        //snake move to right when player pressed right arrow
+        if(runr==true&&e.getKeyCode()==39){
+            directionx=+10;
+            directiony=0;
+            runl=false;
+            runu=true;
+            rund=true;
+        }
+        //snake move to down when player pressed down arrow
+        if(rund==true&&e.getKeyCode()==40);{
+        directionx=0;
+        directiony=+10;
+        runu=false;
+        runr=true;
+        runl=true;
+    }
+        }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+}
 
   
             
-}
+

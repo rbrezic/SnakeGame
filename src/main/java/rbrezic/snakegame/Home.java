@@ -99,7 +99,7 @@ public class Home extends javax.swing.JFrame {
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         PlayersName pn = new PlayersName();
         pn.setVisible(true);
-        
+        dispose();
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**

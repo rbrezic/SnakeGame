@@ -10,10 +10,10 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
     JButton[] lb=new JButton[200];
     JButton bounsfood;
     JTextArea t;
-    int x=1000,y=500,gu=2,directionx=1,directiony=0,speed=100,difference=0,oldx,oldy,score=0;
-    int[] lbx=new int[600];
-    int[] lby=new int[600];
-    Point[] lbp=new Point[600];
+    int x=600,y=300,gu=2,directionx=1,directiony=0,speed=100,difference=0,oldx,oldy,score=0;
+    int[] lbx=new int[400];
+    int[] lby=new int[400];
+    Point[] lbp=new Point[400];
     Point bfp=new Point();
     Thread myt;
     boolean food=false,runl=false,runr=true,runu=true,rund=true,bounsflag=true;
@@ -38,8 +38,9 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
     }
     Snake()
     {
-     super("snake");
-     setSize(1000,590);
+     super("ZMIJA");
+     setSize(615,390);
+     setLocationByPlatform(bounsflag);
      //create menubar with function
      createbar();
      //initalite all variable
@@ -47,7 +48,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
      p1=new JPanel();
      p2=new JPanel();
      //t will view the score
-     t=new JTextArea("Score==>"+score);
+     t=new JTextArea("Score="+score);
      t.setEnabled(false);
      t.setBackground(Color.BLACK);
      //snake have to eat bouncefood to growup
@@ -90,8 +91,8 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
     private void createbar() {
     mymbar=new JMenuBar();
     game=new JMenu("GAME");
-    JMenuItem newgame=new JMenuItem("new game");
-    JMenuItem exit=new JMenuItem("Exit");
+    JMenuItem newgame=new JMenuItem("NOVA IGRA");
+    JMenuItem exit=new JMenuItem("IZLAZ");
     newgame.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -111,14 +112,22 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
     mymbar.add(game);
     level=new JMenu("Level");
     help=new JMenu("Help");
-    JMenuItem creator = new JMenuItem("Creator");
-    JMenuItem instruction= new JMenuItem("Instruction");
+    JMenuItem creator = new JMenuItem("STVORITELJ");
+    JMenuItem instruction= new JMenuItem("INSTRUKCIJE");
     creator.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(p2, "Name"+":Rafael Brezić");
              }
-    });
+    }
+    );
+    instruction.addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+            JOptionPane.showMessageDialog(p2, "Za pomicanje koristite strijelice");
+        }  
+    } 
+    );
     help.add(creator);
     help.add(instruction);
     mymbar.add(help);
@@ -129,7 +138,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         p1.removeAll();
         myt.stop();
         createFirstSnake();
-        t.setText("Score==>"+score);
+        t.setText("Score="+score);
         myt=new Thread(this);
         myt.start();
         
@@ -171,7 +180,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         if(lbx[0]==lbx[gu-1]&&lby[0]==lby[gu-1]){
             food=false;
             score+=5;
-            t.setText("Score==>"+score);
+            t.setText("Score="+score);
             if(score%50==0 && bounsflag==true){
                 p1.add(bounsfood);
                 bounsfood.setBounds((10*r.nextInt(50)),(10*r.nextInt(25)),15,15);
@@ -184,7 +193,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
             if(bfp.x<=lbx[0]&&bfp.y<=lby[0]&&bfp.x+10>=lbx[0]&&bfp.y+10>=lby[0]){
                 p1.remove(bounsfood);
                 score+=100;
-                t.setText("Score==>"+score);
+                t.setText("Score="+score);
                 bounsflag=true;
                 
             }

@@ -4,8 +4,6 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
-import javax.swing.plaf.basic.BasicArrowButton;
-import javax.swing.plaf.metal.MetalComboBoxButton;
 
 public class  Snake extends JFrame implements KeyListener,Runnable {
     JPanel p1,p2;
@@ -54,6 +52,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
      //t.setFont();
      t.setEnabled(false);
      t.setBackground(Color.BLACK);
+     t.setFont(new Font("arial", Font.PLAIN, 15 ));
      //zmija mora jesti
      bouncefood=new JButton();
      bouncefood.setEnabled(false);
@@ -199,7 +198,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         if(bounceflag==false){
             if(bfp.x<=lbx[0]&&bfp.y<=lby[0]&&bfp.x+10>=lbx[0]&&bfp.y+10>=lby[0]){
                 p1.remove(bouncefood);
-                score+=100;
+                score+=20;
                 t.setText("REZULTAT="+score);
                 bounceflag=true;
                 
@@ -215,7 +214,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         
         for(int i=1;i<gu;i++){
         if(lbp[0]==lbp[i]){
-            t.setText("Game over -"+score);
+            t.setText("IGRA ZAVRŠENA -"+score);
             try{
                 myt.join();
             
@@ -251,7 +250,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
             runr=true;
             runl=true;
         }
-        //zmijase krece desno
+        //zmija se krece desno
         if(runr==true&&e.getKeyCode()==39){
             directionx= +10;
             directiony=0;

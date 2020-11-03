@@ -148,6 +148,7 @@ public class PlayersName extends javax.swing.JFrame {
     private void btnStart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStart1ActionPerformed
         Snake s=new Snake();
         s.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnStart1ActionPerformed
 
     /**

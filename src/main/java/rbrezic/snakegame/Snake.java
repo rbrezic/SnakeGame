@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
+import javax.swing.plaf.basic.BasicArrowButton;
+import javax.swing.plaf.metal.MetalComboBoxButton;
 
 public class  Snake extends JFrame implements KeyListener,Runnable {
     JPanel p1,p2;
@@ -48,7 +50,8 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
      p1=new JPanel();
      p2=new JPanel();
      //t will view the score
-     t=new JTextArea("Score="+score);
+     t=new JTextArea("REZULTAT="+score);
+     //t.setFont();
      t.setEnabled(false);
      t.setBackground(Color.BLACK);
      //zmija mora jesti
@@ -60,9 +63,9 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
      p1.setLayout(null);
      p2.setLayout(new GridLayout(0,1));
      p1.setBounds(0,0,x,y);
-     p1.setBackground(Color.BLUE);
+     p1.setBackground(Color.BLACK);
      p2.setBounds(0,y,x, 30);
-     p2.setBackground(Color.RED);
+     p2.setBackground(Color.BLUE);
      
      p2.add(t);
      //dodavanje "fizickog" dijela 
@@ -81,6 +84,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
     private void createFirstSnake() {
     for(int i=0;i<3;i++){
         lb[i]=new JButton("lb"+i);
+        //lb[i].setForeground(Color.red);
         lb[i].setEnabled(false);
         p1.add(lb[i]);
         lb[i].setBounds(lbx[i], lby[i], 10, 10);
@@ -118,7 +122,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
     creator.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(p2, "Name"+":Rafael Brezić");
+            JOptionPane.showMessageDialog(p2, "Ime"+":Rafael Brezić");
              }
     }
     );
@@ -140,7 +144,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         p1.removeAll();
         myt.stop();
         createFirstSnake();
-        t.setText("Score="+score);
+        t.setText("REZULTAT="+score);
         myt=new Thread(this);
         myt.start();
         
@@ -183,7 +187,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         if(lbx[0]==lbx[gu-1]&&lby[0]==lby[gu-1]){
             food=false;
             score+=5;
-            t.setText("Score="+score);
+            t.setText("REZULTAT="+score);
             if(score%50==0 && bounceflag==true){
                 p1.add(bouncefood);
                 bouncefood.setBounds((10*r.nextInt(50)),(10*r.nextInt(25)),15,15);
@@ -196,7 +200,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
             if(bfp.x<=lbx[0]&&bfp.y<=lby[0]&&bfp.x+10>=lbx[0]&&bfp.y+10>=lby[0]){
                 p1.remove(bouncefood);
                 score+=100;
-                t.setText("Score="+score);
+                t.setText("REZULTAT="+score);
                 bounceflag=true;
                 
             }

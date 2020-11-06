@@ -213,7 +213,7 @@ public class  Snake extends JFrame implements KeyListener,Runnable {
         }
         
         for(int i=1;i<gu;i++){
-        if(lbp[0]==lbp[i]){
+        if(lbp[i]==lbp[0]){ //POPRAVITI UVJET
             t.setText("IGRA ZAVRŠENA -"+score);
             try{
                 myt.join();
